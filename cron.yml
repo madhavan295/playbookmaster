@@ -1,0 +1,7 @@
+- hosts: webserver
+  user: root
+  connection: ssh
+  become: yes
+  tasks:
+  - name: Executing webserver role using cron
+    cron: name="Executing webserver role using cron" minute="13" hour="5" job="ansible-playbook webserver.yml > /root/cron.log owner=root mode=0777"

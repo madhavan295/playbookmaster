@@ -1,0 +1,8 @@
+- hosts: all
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Uninstalling HTTPD package
+    yum: name=httpd state=absent

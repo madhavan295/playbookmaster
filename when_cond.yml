@@ -1,0 +1,19 @@
+- hosts: all
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Installing HTTPD package on Redhat family
+    yum: name=httpd state=latest
+    when: ansible_os_family=='RedHat'
+    notify: RESTARTHTTPD
+  - name: Installing APACHE2 package on Debian family
+    yum: name=apache2 state=latest
+    when: ansible_os_family=='Debian'
+    notify: RESTARTAPACHE2
+  handlers:
+  - name: RESTARTHTTPD
+    service: name=httpd state=restarted
+  - name: RESTARTAPACHE2
+    service: name=apache2 state=restarted

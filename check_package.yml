@@ -1,0 +1,6 @@
+- name: verify the elinks package is installed
+  raw: yum list installed | grep elinks >> /root/playbooks/pkgs_elinks.log
+- name: Verify the telnet package is installed
+  raw: yum list installed | grep telnet >> /root/playbooks/pkgs_telnet.log
+- name: verify the httpd package is installed
+  raw: yum list installed | grep httpd >> /root/playbooks/pkgs_httpd.log

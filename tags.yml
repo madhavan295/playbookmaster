@@ -1,0 +1,21 @@
+- hosts: localhost
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Install the telnet and lynx packages
+      yum: name={{ item }} state=latest
+      with_items:
+        - telnet
+        - lynx
+      tags:
+        - tag1
+    - name: Verify that telnet was installed
+      raw: yum list installed | grep telnet > /root/logs/pkg.log
+      tags:
+        - tag2
+    - name: Restart httpd service
+      service: name=httpd state=restarted enabled=yes
+      tags:
+        - tag3

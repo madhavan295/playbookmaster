@@ -1,0 +1,10 @@
+--- #This is my first playbook - installing tree package
+
+- hosts: all
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+  - name: Install tree package
+    yum: name=tree state=present

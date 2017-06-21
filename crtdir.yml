@@ -1,0 +1,11 @@
+--- # RUNONCE PLAYBOOK EXAMPLE
+
+- hosts: all
+  user: root
+  become: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+    - name: Create logs directory under root
+      raw: mkdir /root/logs
+

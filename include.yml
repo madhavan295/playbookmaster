@@ -1,0 +1,10 @@
+--- # Full include tasks example
+
+- hosts: 127.0.0.1
+#  user: root
+#  sudo: yes
+  connection: local
+  gather_facts: no
+  tasks:
+   - include: install_package.yml
+   - include: check_package.yml

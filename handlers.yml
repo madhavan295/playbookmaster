@@ -1,0 +1,12 @@
+- hosts: all
+  connection: ssh
+  user: root
+  become: yes
+  gather_facts: yes
+  tasks:
+  - name: Installing HTTPD package
+    yum: name=httpd state=latest
+    notify: RESTARTHTTPD
+  handlers:
+  - name: RESTARTHTTPD
+    service: name=httpd state=restarted

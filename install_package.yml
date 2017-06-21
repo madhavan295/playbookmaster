@@ -1,0 +1,5 @@
+- name: Install elinks package
+  command: yum install -y elinks
+- name: Install telnet package
+  yum: pkg=telnet state=latest
+
